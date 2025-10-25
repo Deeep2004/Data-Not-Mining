@@ -1,5 +1,6 @@
 # =============== CATBOOST V1 BASELINE ===============
 # A clean first version of CatBoost model with CV
+# Overall CV: RMSE(log)=0.12663, RMSLE=0.12663
 # ----------------------------------------------------
 
 import numpy as np
@@ -43,9 +44,9 @@ cat_idx = [i for i, c in enumerate(X.columns)
 params = dict(
     loss_function="RMSE",
     eval_metric="RMSE",
-    learning_rate=0.01,
+    learning_rate=0.05,
     depth=6,
-    iterations=4000,
+    iterations=2000,
     random_seed=42,
     od_type="Iter",
     od_wait=100,
@@ -81,12 +82,12 @@ cv_rmse_log = np.sqrt(np.mean((y - oof_pred)**2))
 cv_rmsle_lin = rmsle(np.expm1(y), np.expm1(oof_pred))
 print(f"\nOverall CV: RMSE(log)={cv_rmse_log:.5f}, RMSLE={cv_rmsle_lin:.5f}")
 
-# ---------- Submission ----------
-submission = pd.DataFrame({
-    "Id": test["Id"],
-    "SalePrice": test_pred
-})
-submission.to_csv("submission_catv1.csv", index=False)
-print("\nSaved submission_catv1.csv")
+# # ---------- Submission ----------
+# submission = pd.DataFrame({
+#     "Id": test["Id"],
+#     "SalePrice": test_pred
+# })
+# submission.to_csv("submission_catv1.csv", index=False)
+# print("\nSaved submission_catv1.csv")
 
 # =============== END ===============
