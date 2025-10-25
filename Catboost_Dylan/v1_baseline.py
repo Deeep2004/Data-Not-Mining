@@ -82,12 +82,12 @@ cv_rmse_log = np.sqrt(np.mean((y - oof_pred)**2))
 cv_rmsle_lin = rmsle(np.expm1(y), np.expm1(oof_pred))
 print(f"\nOverall CV: RMSE(log)={cv_rmse_log:.5f}, RMSLE={cv_rmsle_lin:.5f}")
 
-# # ---------- Submission ----------
-# submission = pd.DataFrame({
-#     "Id": test["Id"],
-#     "SalePrice": test_pred
-# })
-# submission.to_csv("submission_catv1.csv", index=False)
-# print("\nSaved submission_catv1.csv")
+# ---------- Submission ----------
+submission = pd.DataFrame({
+    "Id": test["Id"],
+    "SalePrice": test_pred
+})
+submission.to_csv("submission_catv1.csv", index=False)
+print("\nSaved submission_catv1.csv")
 
 # =============== END ===============

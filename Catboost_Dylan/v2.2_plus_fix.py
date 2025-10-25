@@ -4,6 +4,7 @@
 # Packs you can toggle at the top: robust impute, ordinals, skew log1p, rare bucket, drop near-constant,
 # NeighborhoodEnc smoothing, and GroupKFold vs KFold.
 # Overall CV: RMSE(log)=0.12412, RMSLE=0.12412
+# Overall CV: RMSE(log)=0.14910, RMSLE=0.14910 (with GroupKFold)
 # ======================================================================================
 
 import math
@@ -20,7 +21,7 @@ from sklearn.model_selection import GroupKFold, KFold
 SEED = 42
 N_SPLITS = 5
 
-USE_GROUP_KFOLD = False          # <-- set False to match v1-style random CV
+USE_GROUP_KFOLD = True          # <-- set False to match v1-style random CV
 PACK_ROBUST_IMPUTE = False
 PACK_ORDINALS = True
 PACK_SKEW_LOG1P = False
@@ -44,6 +45,7 @@ CB_PARAMS = dict(
 
 DATA_DIR = Path("../data")
 TRAIN_PATH = DATA_DIR / "train.csv"
+TEST_PATH = DATA_DIR / "test.csv"
 
 # ----------------------------- Utils ---------------------------------
 def rmsle(y_true: np.ndarray, y_pred: np.ndarray) -> float:
@@ -195,6 +197,7 @@ def rare_bucket(df: pd.DataFrame, col: str, min_count: int = 10) -> pd.Series:
 # ------------------------------ Main ---------------------------------
 def main():
     train = pd.read_csv(TRAIN_PATH)
+    test = pd.read_csv(TEST_PATH)
 
     # Reference v1-like: minimal fill only (we still use minimal_catboost_clean)
     train = minimal_catboost_clean(train)
