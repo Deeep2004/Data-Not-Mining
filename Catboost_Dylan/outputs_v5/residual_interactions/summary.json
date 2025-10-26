@@ -1,0 +1,6 @@
+{
+  "base_cv_rmsle": 0.12131892004248085,
+  "final_cv_rmsle": 0.14193510669312612,
+  "delta": -0.02061618665064527,
+  "notes": "CatBoost + explicit numeric\u00d7numeric crosses + tiny residual model (LGBM/HGBR)."
+}

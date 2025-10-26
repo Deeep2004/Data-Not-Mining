@@ -1,0 +1,6 @@
+{
+  "base_cv_rmsle": 0.14009616872543484,
+  "final_cv_rmsle": 0.13949851570667599,
+  "delta": 0.0005976530187588591,
+  "notes": "CatBoost + MLP residual with one-hot 'embeddings' for major categoricals."
+}

@@ -1,0 +1,2 @@
+method,cv_rmsle,notes
+v5_residual_interactions,0.141935,Adds explicit crosses; residual soaks leftover patterns.

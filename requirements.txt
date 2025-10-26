@@ -3,3 +3,5 @@ scikit-learn
 pandas
 catboost
 pathlib
+lightgbm
+category_encoders

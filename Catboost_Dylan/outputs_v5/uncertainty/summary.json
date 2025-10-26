@@ -1,0 +1,10 @@
+{
+  "ensemble_mean_cv": 0.12101565756858865,
+  "ensemble_mean_calibrated_cv": 0.11708322686181093,
+  "avg_single_seed_cv": 0.12268198654272303,
+  "delta_vs_avg_single": 0.001666328974134379,
+  "delta_with_calibration": 0.005598759680912099,
+  "top20_rmsle_before": 0.1495830289307668,
+  "top20_rmsle_after": 0.13109606450171624,
+  "notes": "7-seed bagging + isotonic tail calibration."
+}

@@ -1,0 +1,42 @@
+CatBoost v4 — Interpretability & Hybridization (v3-lite based)
+== CV Results ==
+CatBoost RMSLE: 0.14430
+Hybrid   RMSLE: 0.14526
+
+== What drives price (top features) ==
+- TotalSF: mean |SHAP| = 0.0760
+- OverallQual: mean |SHAP| = 0.0469
+- GrLivArea: mean |SHAP| = 0.0349
+- ExterQual_ord: mean |SHAP| = 0.0276
+- OverallCond: mean |SHAP| = 0.0240
+- Neighborhood: mean |SHAP| = 0.0226
+- LotArea: mean |SHAP| = 0.0196
+- Fireplaces: mean |SHAP| = 0.0148
+- BsmtFinSF1: mean |SHAP| = 0.0140
+- Age: mean |SHAP| = 0.0140
+
+Actionable: Concentrate V5 on the top 5–10 features. Try explicit crosses and regime-aware models where PDPs show thresholds.
+
+== Important interactions (pairs) ==
+- GrLivArea_to_TotalSF × MSSubClass: interaction = 90.0000
+- BathsPerRoom × MSSubClass: interaction = 90.0000
+- BathsPerRoom × MSSubClass: interaction = 89.0000
+- RemodAge × MSSubClass: interaction = 89.0000
+- GrLivArea_to_TotalSF × MSSubClass: interaction = 89.0000
+- RemodAge × MSSubClass: interaction = 88.0000
+- Age × MSSubClass: interaction = 88.0000
+- BathsPerRoom × MSSubClass: interaction = 88.0000
+- GrLivArea_to_TotalSF × MSSubClass: interaction = 88.0000
+- TotalSF × MSSubClass: interaction = 87.0000
+
+Actionable: In V5, add engineered crosses for these pairs, or train a small residual model using just these interactions.
+
+== PDPs inspected ==
+TotalSF, OverallQual, GrLivArea, ExterQual_ord, OverallCond, Neighborhood
+
+== Suggested V5 directions ==
+1) Learn blending weights via stacking (replace fixed alpha with meta-learner on CatBoost+Linear(+Lasso)).
+2) Residual modeling on top features/interactions (LightGBM/MLP) to capture leftover nonlinearity.
+3) Regime splits if PDP shows saturation (e.g., GrLivArea > 3000) and fit per-regime models.
+4) Uncertainty: multi-seed CatBoost ensemble to estimate prediction intervals.
+5) Target-aware calibration for luxury tail where residuals skew.

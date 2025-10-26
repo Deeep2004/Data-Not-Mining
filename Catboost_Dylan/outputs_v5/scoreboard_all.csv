@@ -1,0 +1,5 @@
+method,cv_rmsle,notes,source
+v5_uncertainty_calib,0.117083,Bagging improves stability; tail calibration fixes luxury bias.,uncertainty
+v5_tabular_embed_fusion,0.139499,Neural residual complements tree splits for smooth category similarity.,emb_fusion
+v5_residual_interactions,0.141935,Adds explicit crosses; residual soaks leftover patterns.,residual_interactions
+v5_stack,0.16695,Learns when to trust each expert.,stack

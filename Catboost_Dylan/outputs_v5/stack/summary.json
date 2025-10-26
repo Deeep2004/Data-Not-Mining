@@ -1,0 +1,6 @@
+{
+  "base_cv_rmsle": 0.14009616872543484,
+  "final_cv_rmsle": 0.166949790599419,
+  "delta": -0.026853621873984157,
+  "notes": "Stacked A/B/C experts with Ridge meta on OOF."
+}

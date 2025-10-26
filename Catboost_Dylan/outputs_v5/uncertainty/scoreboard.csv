@@ -1,0 +1,2 @@
+method,cv_rmsle,notes
+v5_uncertainty_calib,0.117083,Bagging improves stability; tail calibration fixes luxury bias.
