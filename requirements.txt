@@ -5,3 +5,5 @@ catboost
 pathlib
 lightgbm
 category_encoders
+matplotlib
+jupyter
