@@ -1,0 +1,2 @@
+method,cv_rmsle,notes
+v5_uncertainty_calib,0.13518,Bagging + tail isotonic for robust luxury predictions.
